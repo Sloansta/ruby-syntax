@@ -134,3 +134,113 @@ puts add_nums(3, 7)
 
 # exceptions 
 
+print "Enter a number: "
+first_num = gets.to_i
+puts "Enter another number: "
+second_num = gets.to_i
+
+begin
+    answer = first_num / second_num
+
+rescue
+    puts "You cannot divide by 0"
+    exit
+end
+
+def check_age(age)
+    raise ArgumentError, "Enter a positive number" unless age > 0
+end
+
+begin
+    check_age(-1)
+rescue ArgumentError
+    puts "That is not an age"
+end
+
+# string functions
+
+# single line strings would not work and it would give the text literally
+puts "add them #{4 + 5}\n"
+
+multiline_str = <<EOM
+This is a very long string that contains 
+interpolation like #{4 + 5} \n
+EOM
+
+puts multiline_str
+
+puts multiline_str.include?("is")
+
+puts multiline_str.size
+
+puts multiline_str.count("aeiou").to_s
+puts multiline_str.count("^aeiou").to_s
+
+
+# OOP
+
+class Animal
+    def initialize
+        puts "creating a new animal"
+    end
+
+    def set_name(new_name)
+        @name = new_name
+    end
+
+    def get_name()
+        @name
+    end
+
+    def name 
+        @name 
+    end
+
+    def name=(new_name)
+        if new_name.is_a?(Numeric)
+            puts "name cant be a number"
+        else
+            @name = new_name
+        end
+    end
+end
+
+cat = Animal.new 
+cat.set_name("Mike")
+cat.get_name
+
+puts cat.name
+
+cat.name = "Fritz"
+
+puts cat.name
+
+class Dog 
+    # Could do v
+    #attr_reader :name, :height, :weight
+    #attr_writer :name, :height, :weight 
+    attr_accessor :name, :height, :weight 
+
+    def bark 
+        return "Generic Bark"
+    end
+end
+
+rover = Dog.new
+rover.name = "rover"
+
+puts rover.name
+
+
+class GermanShepard < Dog 
+    def bark
+        return "loud bark"
+    end
+end
+
+max = GermanShepard.new
+
+max.name = "Max"
+
+puts max.name
+puts max.bark
