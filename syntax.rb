@@ -307,3 +307,22 @@ gen_bird.tweet(Cardinal.new)
 gen_bird.tweet(Parrot.new)
 
 #symbols - Basically strings that cannot be changed 
+:sloan 
+
+puts :sloan 
+puts :sloan.to_s 
+puts :sloan.class
+puts :sloan.object_id
+
+# more on arrays 
+array_1 = Array.new 
+array_2 = Array.new(5)
+array_3 = Array.new(5, "empty")
+array_4 = [1, "two", 2, 5, 9]
+
+puts array_1
+puts array_2
+puts array_3
+puts array_4
+
+puts array_4[2]
