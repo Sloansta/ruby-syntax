@@ -244,3 +244,66 @@ max.name = "Max"
 
 puts max.name
 puts max.bark
+
+#modules 
+
+require_relative "human"
+require_relative "smart"
+
+module WaterAnimal 
+    def make_sound 
+        puts "hsssss"
+    end
+end
+
+class Gator 
+    include WaterAnimal
+end
+
+small_gator = Gator.new
+small_gator.make_sound
+
+class Scientist 
+    include Human 
+    prepend Smart 
+
+    def act_smart
+        return "E = mc^2"
+    end
+end
+
+einstien = Scientist.new
+
+einstien.name = "Albert"
+
+puts einstien.name 
+
+einstien.run
+puts einstien.act_smart
+
+#polymorphism
+
+class Bird 
+    def tweet(bird_type)
+        bird_type.tweet 
+    end
+end
+
+class Cardinal < Bird 
+    def tweet 
+        puts "tweet tweet"
+    end
+end
+
+class Parrot < Bird 
+    def tweet 
+        puts "Squawk"
+    end
+end
+
+gen_bird = Bird.new 
+
+gen_bird.tweet(Cardinal.new)
+gen_bird.tweet(Parrot.new)
+
+#symbols - Basically strings that cannot be changed 
