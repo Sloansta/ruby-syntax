@@ -318,7 +318,7 @@ puts :sloan.object_id
 array_1 = Array.new 
 array_2 = Array.new(5)
 array_3 = Array.new(5, "empty")
-array_4 = [1, "two", 2, 5, 9]
+array_4 = [1, "two", 2, 5, 9, 100, 100]
 
 puts array_1
 puts array_2
@@ -326,3 +326,90 @@ puts array_3
 puts array_4
 
 puts array_4[2]
+
+puts "array size: " + array_4.size().to_s
+puts "array contains 100" + array_4.include?(100).to_s 
+puts "How many 100? " + array_4.count(100).to_s
+puts "Empty? " + array_4.empty?.to_s 
+p array_4 
+
+array_4.each do |val|
+    puts val 
+end
+
+# hashes 
+
+number_hash = {"PI" => 3.14, "Golden" => 1.618, "e" => 2.718}
+
+puts number_hash["PI"]
+
+superheros = Hash["Clark Kent", "Superman", "Bruce Wayne", "Batman"]
+
+puts superheros["Clark Kent"]
+
+superheros["Barry Allen"] = "Flash"
+
+superheroines = Hash["Lisa Morel", "Aquagirl", "Betty Kane", "Batgirl"]
+
+superheros.merge(superheroines)
+
+superheros.each do |key, val|
+    puts key.to_s + " " + val 
+end
+
+superheros.delete("Barry Allen")
+
+puts superheros
+
+
+#enumerables
+
+class Menu 
+    include Enumerable
+
+    def each 
+        yield "pizza"
+        yield "tacos"
+        yield "salad"
+        yield "water"
+        yield "bread"
+    end
+end
+
+menu_options = Menu.new 
+
+menu_options.each do |item|
+    puts item 
+end
+
+p menu_options.find{|item| item = "pizza"}
+
+p menu_options.select{|item| item.size <= 5}
+
+p menu_options.first 
+
+p menu_options.take(2)
+
+p menu_options.drop(2)
+
+p menu_options.min 
+p menu_options.max 
+
+# file object
+
+new_file = File.new("authors.out", "w")
+
+new_file.puts "William Shakespear"
+new_file.puts "Agatha Christie"
+new_file.puts "Barbara Cartland"
+
+new_file.close
+
+puts File.read("authors.out")
+
+new_file = File.new("authors.out", "a")
+new_file.puts "Danielle Steel"
+new_file.close 
+
+puts File.read("authors.out")
+    
